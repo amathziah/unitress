@@ -18,9 +18,11 @@ export const loginUser = async (username, password) => {
 // Get Menu API call
 export const getMenu = async (token) => {
   try {
+    console.log(token)
     const response = await axios.get(`${API_URL}/menu/menus`, {
       headers: { Authorization: `Bearer ${token}` },
     });
+    console.log(response)
     return response.data.menus;
   } catch (error) {
     throw new Error('Failed to fetch menus');

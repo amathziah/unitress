@@ -10,6 +10,11 @@ const Login = ({ setAuthToken, setRole }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    // Remove any existing token and role before setting the new ones
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('role');
+
     try {
       const data = await loginUser(username, password);
       console.log(data);
@@ -64,6 +69,7 @@ const Login = ({ setAuthToken, setRole }) => {
 };
 
 export default Login;
+
 
 
 

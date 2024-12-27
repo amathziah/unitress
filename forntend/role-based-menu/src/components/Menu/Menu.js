@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link } from 'react-router-dom';
 import { getMenu } from '../../api/api';
 
 const Menu = ({ authToken, role }) => {
@@ -9,6 +9,7 @@ const Menu = ({ authToken, role }) => {
     const fetchMenus = async () => {
       try {
         const menuItems = await getMenu(authToken);
+        console.log(menuItems)       
         setMenus(menuItems);
       } catch (err) {
         console.error('Error fetching menus:', err);
@@ -21,40 +22,51 @@ const Menu = ({ authToken, role }) => {
   }, [authToken]);
 
   return (
-    <div className="flex">
-      {/* Sidebar (Menu) */}
-      <div className="w-64 p-6 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">Menu</h2>
-
-        {/* Displaying Role */}
-        <div className="text-center text-lg text-gray-700 mb-4">
-          <p><strong>Current Role: </strong>{role}</p>
+    <div className="flex h-screen">
+      {/* Sidebar */}
+      <div className="w-64 bg-gray-50 dark:bg-gray-800 fixed h-full shadow-lg">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center">
+            Menu
+          </h2>
+          <p className="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
+            <strong>Current Role:</strong> {role}
+          </p>
         </div>
 
-        <ul className="space-y-4">
+        {/* Menu List */}
+        <ul className="mt-4 space-y-2 px-4">
           {menus.map((menu, index) => (
-            <li key={index} className="hover:bg-gray-100 rounded-lg">
+            <li key={index}>
               <Link
-                to={menu.path} // Use Link to navigate to the path
-                className="block text-lg text-blue-600 font-medium px-4 py-2 hover:text-blue-800 transition-colors"
+                to={menu.path}
+                className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-700 dark:hover:bg-gray-700 dark:hover:text-gray-300 transition-colors"
               >
-                {menu.title}
+                {/* Replace with your desired icon */}
+                <svg
+                  className="h-6 w-6 text-gray-500 dark:text-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 12l2-2m0 0l7-7 7 7 2 2L3 12z"
+                  />
+                </svg>
+                <span className="text-lg font-medium text-gray-800 dark:text-gray-200">
+                  {menu.title}
+                </span>
               </Link>
             </li>
           ))}
         </ul>
-      </div>
-
-      {/* Main Content Area */}
-      <div className="flex-1 p-6 bg-gray-100 rounded-lg shadow-lg ml-6">
-        {/* Main content goes here */}
-        <h1 className="text-3xl font-semibold text-gray-800">Dashboard Content</h1>
-        {/* You can place additional content here */}
       </div>
     </div>
   );
 };
 
 export default Menu;
-
-

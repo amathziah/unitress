@@ -3,6 +3,7 @@ const prismaClient = new prisma();
 
 const getMenu = async (req, res) => {
   const { role } = req.user;
+  console.log(role)
 
   try {
     if (!role) {
