@@ -2,7 +2,7 @@
 
 You can access the live version of the application at:
 
-[Unitress - Live App](https://unitress-5.onrender.com)
+[Unitress - Live App](https://unitress-5.onrender.com/login)
 
 ## Admin Login Credentials
 
