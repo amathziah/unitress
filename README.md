@@ -13,6 +13,20 @@ Use the following credentials to log in as an admin:
 - **Username**: `amathziah`
 - **Password**: `12345qwert`
 
+## Manager Login Credentials
+
+Use the following credentials to log in as a manager:
+
+- **Username**: `pugal1`
+- **Password**: `12345qwer`
+
+## User Login Credentials
+
+Use the following credentials to log in as a regular user:
+
+- **Username**: `akoshi`
+- **Password**: `12345qwert`
+
 **Note**: This application is hosted on Render's free tier, so it may take some time to load initially due to the free instance spinning down with inactivity.
 
 ## User Management
@@ -29,6 +43,10 @@ After logging in as an admin, manager, or regular user, you can:
 
 - **Logout** and use the respective credentials for each role.
 - Check the updated **Navbar** and explore the **features** available for each role (Admin, Manager, or User).
+  - **Admin**: Full access to user management and all features.
+  - **Manager**: Limited access to user management and some restricted features.
+  - **User**: Basic access to features available for regular users.
+
   - **Admin**: Full access to user management and all features.
   - **Manager**: Limited access to user management and some restricted features.
   - **User**: Basic access to features available for regular users.
